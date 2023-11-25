@@ -1,0 +1,34 @@
+body {
+    font-family: sans-serif;
+    background: #dedede;
+    padding: 48px;
+  }
+  
+  h1 {
+    text-align: center;
+    display: inline-block;
+    font-size: 72px;
+  }
+  
+  .search-input {
+    width: 20rem;
+    height: 20px;
+    border-radius: 10px;
+    outline: none;
+    border-color: none;
+    margin-bottom: 15px;
+  }
+  
+  .output-wrapper {
+    display: none;
+  }
+
+  .display {
+    display: block;
+  }
+  
+  .output {
+    width: 20rem;
+    outline: 1px solid yellow;
+  }
+  
