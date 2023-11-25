@@ -1,6 +1,7 @@
 class Selector{
     #root = null;
     #nodes = [];
+    #node_with_id = null;
 
     constructor(){
         this.#root = document.body;
@@ -25,10 +26,26 @@ class Selector{
         return this.#nodes;
     }
 
+    getElementById(value){
+        const findNodes = (node)=>{
+            if(node.id === value){
+                this.#node_with_id = node;
+                return;
+            }
+
+            for(let i=0;i<node.childNodes.length;i++){
+                findNodes(node.childNodes[i])
+            }
+        };
+
+        findNodes(this.#root);
+        return this.#node_with_id ?? new Error("Node not found");
+    }
+
     getRootNode(){
         return this.#root;
     }
 }
 
 let mySelector = new Selector();
-console.log(mySelector.getElementsByClassName("test2"));
+console.log(mySelector.getElementById("test5"));
