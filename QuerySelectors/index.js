@@ -4,7 +4,7 @@ class Selector{
     #node_with_id = null;
 
     constructor(){
-        this.#root = document.body;
+        this.#root = document.body; // save a copy of the root node.
     }
 
     getElementsByClassName(value){
