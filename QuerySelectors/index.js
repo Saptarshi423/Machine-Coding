@@ -39,7 +39,7 @@ class Selector{
         };
 
         findNodes(this.#root);
-        return this.#node_with_id ?? new Error("Node not found");
+        return this.#node_with_id ?? new Error(`Node id ${value} not found`);
     }
 
     getRootNode(){
