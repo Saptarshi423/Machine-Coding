@@ -3,6 +3,7 @@ import "./index.css";
 
 export const Images = ({ auto, data, currIdx, setCurrIdx }) => {
   const [hasEnded, setHasEnded] = useState(false);
+
   const getComputedStyle = (index) => {
     let styleObj = {};
 
@@ -30,63 +31,59 @@ export const Images = ({ auto, data, currIdx, setCurrIdx }) => {
     }
   };
 
-  // Slide function. Returns true once all the images in data has been rendered.
+  // Slide function.
+  // Que up the changeCurrIdx callback for each data items.
+  // Each item will be rendered after 2secs.
   const slide = () => {
-    return new Promise((resolve, reject) => {
-      data.forEach((item, index) => {
+    let promises = data.map((item, index) => {
+      return new Promise((resolve, reject) => {
         setTimeout(() => {
           setCurrIdx((prev) => {
-            console.log(prev)
+            console.log("Current index", prev);
             if (prev === data.length - 1) return 0;
             return prev + 1;
           });
-
-          if (index === data.length - 1) {
-            console.log(index, data.length-1)
-            resolve(true);
-          }
-        }, (hasEnded ? index+1 : index) * 2000);
+          resolve(true);
+        }, (index + 1) * 2000);
       });
     });
+    console.log("Promise array", promises);
+    return promises;
   };
 
-  const autoSlide = async () => {
+  // After all the promises are resolved autoSlide again.
+  const autoSlide = () => {
     try {
-      let result = await slide();
-      setHasEnded(result);
+      Promise.all([...slide()]).then((values) => {
+        setHasEnded(true);
+      });
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
+    let timer = null;
     if (auto) {
       console.log("Sliding...");
-      autoSlide();
+      timer = setTimeout(() => {
+        autoSlide();
+      }, 1000);
+    }
+
+    return ()=>{
+      clearTimeout(timer)
     }
   }, []);
 
   useEffect(() => {
     if (hasEnded && auto) {
       setHasEnded(false);
-      autoSlide()
+      autoSlide();
     }
   }, [hasEnded]);
 
-  // useEffect(()=>{
-  //   if(auto){
-  //     console.log('Sliding...')
-  //     autoSlide();
-  //   }
-  // },[]);
 
-  // useEffect(()=>{
-  //   if((currIdx+data.length === data.length) && (auto)){
-  //     console.log('Sliding again...')
-  //     autoSlide();
-  //     // setEnded(true);
-  //   }
-  // },[currIdx])
   return (
     <div className="images-container">
       <button
