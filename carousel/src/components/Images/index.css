@@ -1,6 +1,6 @@
 .images-container {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
 }
 
 .btn {
@@ -11,10 +11,14 @@
 .image-wrapper {
   height: 50rem;
   width: 41rem;
-  margin-top: 3rem;
-  transition: 3s ease-in;
+  transition: display 0.3s ease-in;
 }
 .image-wrapper__img {
+  object-fit: contain;
   width: 85%;
   height: 100%;
+}
+
+.images-wrapper{
+  display: flex;
 }
