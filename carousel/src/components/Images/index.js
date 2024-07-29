@@ -35,7 +35,7 @@ export const Images = ({ auto, data, currIdx, setCurrIdx }) => {
 
   // Slide function.
   // Que up the changeCurrIdx callback for each data items.
-  // Each item will be rendered after 2secs.
+  // Each item will return us a promise.
   const slide = () => {
     let promises = data.map((item, index) => {
 
@@ -68,7 +68,7 @@ export const Images = ({ auto, data, currIdx, setCurrIdx }) => {
   const autoSlide = () => {
     Promise.all([...slide()]).then((values) => {
       setHasEnded(true);
-    });
+    }).catch((err)=>{console.error(err)})
   };
 
   useEffect(() => {

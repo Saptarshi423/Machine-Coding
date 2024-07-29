@@ -21,8 +21,8 @@ function renderItems(items=[]){
         outputHtml+=`<div id="${index}" class="output">${item}</div>`
     });
     
-    outputContainer.classList.add("display")
-    outputContainer.innerHTML = outputHtml
+    outputContainer.classList.add("display");
+    outputContainer.innerHTML = outputHtml;
 }
 
 function handelChange(e) {

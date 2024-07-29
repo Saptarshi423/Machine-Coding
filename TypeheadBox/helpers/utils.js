@@ -20,7 +20,7 @@ function debounce(fn, delay=500){
       let context = this;
       clearTimeout(timer);
       timer = setTimeout(()=>{
-          fn.apply(context, arguments)
+        fn.apply(context, arguments)
       },delay)
   }
 }
