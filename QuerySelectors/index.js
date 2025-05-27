@@ -48,5 +48,6 @@ class Selector{
 }
 
 let mySelector = new Selector();
+document.getElementsByClassName()
 console.log(mySelector.getElementsByClassName("test1"));
 console.log(mySelector.getElementById("test_5"));
