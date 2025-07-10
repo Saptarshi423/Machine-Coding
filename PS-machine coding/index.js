@@ -19,7 +19,7 @@ const populateTable = (data) => {
 
   console.log("Films:", data[0]);
   console.log("Starships:", data[1]);
-  
+
    
 };
 
@@ -28,7 +28,7 @@ const populateList = (data) => {
     console.error("No data available to populate the list.");
     return;
   }
-  console.log(data);
+  //console.log(data);
   setData(data);
 
   data.forEach((item) => {
@@ -86,7 +86,7 @@ selector.addEventListener("change", async (event) => {
 
     console.log(response);
     populateTable(response);
-  } else {
+  } else {   
     console.error("Selected item not found in incoming data.");
   }
 });

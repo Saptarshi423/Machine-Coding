@@ -88,17 +88,28 @@ console.log(ret())
 
 // FLATTEN A NESTED OBJECT.
 // Declare an object
-let obj = {
-    Company: "GeeksforGeeks",
-    Address: "Noida",
-    contact: +91-999999999,
-    mentor: {
-        HTML: "GFG",
-        CSS: "GFG",
-        JavaScript: "GFG"
-    }
-};
+// let obj = {
+//     Company: "GeeksforGeeks",
+//     Address: "Noida",
+//     contact: +91-999999999,
+//     mentor: {
+//         HTML: "GFG",
+//         CSS: "GFG",
+//         JavaScript: "GFG"
+//     }
+// };
 
-function debounce(delay=1000, func){
+// function debounce(delay=1000, func){
 
-}
+// }
+
+document.getElementById('div1').addEventListener('click', (e)=>{
+    console.log("Div clicked");
+},false);
+
+document.getElementById('btn1').addEventListener('click', ()=>{
+    // Promise.resolve().then(()=>{console.log("Promise resolved")});
+    // setTimeout(()=>{console.log("Timeout executed")}, 0);
+    // console.log("Button clicked");
+    console.log("Button clicked");
+},false);
