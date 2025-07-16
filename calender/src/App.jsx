@@ -118,11 +118,11 @@ const Calender = ({ events }) => {
 };
 
 const Event = ({ eventsMapper, month, year }) => {
-  const today = new Date(year, month);
+  const today = new Date();
   const firstDateOfMonth = startOfMonth(today);
   const lastDateOfMonth = lastDayOfMonth(today).getDate();
   const firstDay = new Date(firstDateOfMonth).getDay();
-  console.log({firstDateOfMonth, lastDateOfMonth, firstDay});
+  console.log({firstDateOfMonth, lastDateOfMonth, firstDay, today});
   return (
     <div className="days-container">
         {Days.map((day, index) => {

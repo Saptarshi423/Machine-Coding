@@ -37,19 +37,23 @@ class Observer {
   }
 }
 
-const m_sub = new Subject();
-
 function printData(data) {
   console.log(data);
   console.log(".............");
 }
 
-function subscribe_to(config, callbk) {
+const config = {
+  name: "Observer1",
+  callback: printData,
+};
+
+function subscribe_to(config) {
+  const m_sub = new Subject();
   const observer1 = new Observer(config.name, config.callback);
   m_sub.subscribe(observer1);
 }
 
-//subscribe_to(observer1, printData);
+subscribe_to(config);
 
 module.exports = {
   Subject,
